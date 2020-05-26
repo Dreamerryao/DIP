@@ -1,0 +1,43 @@
+# Project: bmp project
+# Makefile created by Dev-C++ 5.11
+
+CPP      = g++.exe
+CC       = gcc.exe
+WINDRES  = windres.exe
+OBJ      = main.o processBMP.o process2BMP.o outputBMP.o process3BMP.o output8bitBMP.o
+LINKOBJ  = main.o processBMP.o process2BMP.o outputBMP.o process3BMP.o output8bitBMP.o
+LIBS     = -L"D:/Dev-Cpp/MinGW64/lib" -L"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc
+INCS     = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
+CXXINCS  = -I"D:/Dev-Cpp/MinGW64/include" -I"D:/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"D:/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
+BIN      = "bmp project.exe"
+CXXFLAGS = $(CXXINCS) 
+CFLAGS   = $(INCS) 
+RM       = rm.exe -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before $(BIN) all-after
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o $(BIN) $(LIBS)
+
+main.o: main.c
+	$(CPP) -c main.c -o main.o $(CXXFLAGS)
+
+processBMP.o: processBMP.cpp
+	$(CPP) -c processBMP.cpp -o processBMP.o $(CXXFLAGS)
+
+process2BMP.o: process2BMP.cpp
+	$(CPP) -c process2BMP.cpp -o process2BMP.o $(CXXFLAGS)
+
+outputBMP.o: outputBMP.cpp
+	$(CPP) -c outputBMP.cpp -o outputBMP.o $(CXXFLAGS)
+
+process3BMP.o: process3BMP.cpp
+	$(CPP) -c process3BMP.cpp -o process3BMP.o $(CXXFLAGS)
+
+output8bitBMP.o: output8bitBMP.cpp
+	$(CPP) -c output8bitBMP.cpp -o output8bitBMP.o $(CXXFLAGS)
